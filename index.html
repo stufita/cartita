@@ -1,0 +1,219 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carta Secreta</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+      overflow-y: scroll;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .screen {
+      display: none;
+      width: 100%;
+    }
+
+    .password-screen.active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      position: relative;
+      z-index: 2;
+    }
+
+    #notepadScreen.active {
+      display: block;
+      padding: 40px 15px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .notepad {
+      background-color: #fff0f6;
+      border: 3px solid #f8bbd0;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      font-family: 'Comic Sans MS', cursive;
+      line-height: 1.8;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      animation: aparecer 1s ease;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .text {
+      white-space: pre-line;
+      font-size: 15px;
+      text-align: justify;
+    }
+
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .key {
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: #f8bbd0;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .input-display {
+      font-size: 24px;
+      letter-spacing: 8px;
+      margin-top: 15px;
+    }
+
+    /* corazones */
+    .hearts {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 20px;
+      animation: subir 10s linear infinite;
+      opacity: 0.5;
+    }
+
+    @keyframes subir {
+      from { transform: translateY(0); }
+      to { transform: translateY(-120vh); }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div id="passwordScreen" class="screen password-screen active">
+  <h2>🔒 Enter password</h2>
+  <div id="inputDisplay" class="input-display">••••</div>
+
+  <div class="keypad">
+    <button class="key" onclick="enterDigit('1')">1</button>
+    <button class="key" onclick="enterDigit('2')">2</button>
+    <button class="key" onclick="enterDigit('3')">3</button>
+    <button class="key" onclick="enterDigit('4')">4</button>
+    <button class="key" onclick="enterDigit('5')">5</button>
+    <button class="key" onclick="enterDigit('6')">6</button>
+    <button class="key" onclick="enterDigit('7')">7</button>
+    <button class="key" onclick="enterDigit('8')">8</button>
+    <button class="key" onclick="enterDigit('9')">9</button>
+    <div></div>
+    <button class="key" onclick="enterDigit('0')">0</button>
+    <div></div>
+  </div>
+</div>
+
+<div id="notepadScreen" class="screen">
+  <div class="notepad">
+
+    <h3 style="text-align:center;">📅 18 Marzo 2026</h3>
+    <h4 style="text-align:center;">Nuestro primer año juntas</h4>
+
+    <div class="text">
+Para dar un comienzo a lo que te quiero decir, qué mejor comienzo hay que desde el principio, y no es cualquier principio, es el NUESTRO, dos boludas que entran en un grupo por aburrimiento sin esperar nada o a nadie. Y qué curioso que yo entraba a grupos sabiendo que no iba a durar mucho dentro, pero ese grupo tuve una sensación diferente a los demás y claro, era porque tenía que conocer a alguien y esa eras vos. Que a penas te vi y me llamaste mucho la atención. Cómo no llamar la atención una chica tan bonita y tan tranquila como vos. Era curioso porque te vi muy linda y muy inalcanzable que ahora estamos acá, las dos. Sin tener dimensión del tiempo que pasó y todo lo que pasamos juntas que ahora no puedo visualizarme con nadie más que no sea con vos, a tú lado. Nunca me lo habría imaginado, estar con la persona que siempre visualicé. Así vos, tan linda, tan tranquila, tan empática, tan sensible, VOS solo vos, lo que me hace feliz y aunque tengamos muchas diferencias y seamos muy diferentes en muchos aspectos, sé que puedo estar tranquila y en paz porque haríamos mucho la una por la otra, así sea tener que cruzar un país diferente o un continente lo que sea, mientras estemos juntas. Porque eso fue lo que desde un principio hicimos, yo sabiendo que nunca habías estado en una relación, el arriesgarme valió la pena, nunca me arrepentiría de haberte cruzado y que sigas conmigo. Siempre fui mala expresando mis sentimientos y confiando en la gente, pero con vos intento y trato mucho de que eso sea diferente, las dos merecemos nuestra mejor versión para entregarnosla. Yo por ejemplo aprender a cuidar tu sensibilidad, que aunque tengas toda la sensibilidad del mundo, no importe porque voy a saber tratarte mejor. Gracias por todo esto, por haberme dejado entrar a tu vida, haber confiado en mí, haber perdonado mis cagadas. Y gracias por haber logrado dejar mi desconfianza en algunas cosas, porque aún me cuesta demasiado pero lo intento y lo quiero intentar y lograr con vos. Ojalá saber expresarme mucho más con lo que siento o con las palabras,e encantaría saber decirte lo mucho que te amo y todo lo lindo que me haces sentir, aunque a veces no parezca porque soy una amargada, pero esa amargura se hace sensible cuando estoy con vos. Ojalá lograr a entender mejor tú mundo, porque quiero que también sea el mío. Y ojalá que en todos los universos habidos y por haber, vos seas la persona que me deje entrar a su vida, porque yo voy a estar ahí esperándote.
+Ya no veo la hora de poder hacer todo lo que hacemos y más pero juntas, ya sé que siempre digo que quiero que nos veamos cuando yo esté segura, pero en el fondo si quiero verte, sentirte, mirarte. Espero que cuando llegue el momento no te decepcione boe. Yo voy a estar dispuesta a conocer todo de vos, mirarte en cada momento, si fuera por mí te contaría hasta cada pestañita que tenés. Realmente desde que te conocí, todo lo que soñé se hizo realidad, conocer a alguien que valga demasiado la pena y espero este sueño perdure por toda una eternidad, porque desde que llegaste a mi vida me pongo a pensar de cómo cambió mi vida para bien, creaste en mí una felicidad que ni yo sabía que existía y te agradezco por haberme hecho mirar un mundo más lindo, imaginadome siempre un futuro con vos,
+me encanta crearme escenarios de nosotras ya juntas, con nuestra casita y nuestros hijos gatunos, las dos tranquilas y haciendo cosas de las que ahora hablamos. Porque en cada lugar en la que mi imaginación se transporte, vos vas a estar ahí conmigo, de la mano al lugar que vayamos. Gracias por hacerme valorar y proteger este bonito amor. Me haces sentir muy especial, mi alma está feliz en donde está, se siente como estar en mi hogar, el lugar donde lo que menos quisiera es escapar. Ojalá cada que te sientas mal y sientas que no podés más o que pienses que a nadie le importaría si te vas, leas este escrito que hice para vos, que sepas que mientras lo nuestro dure, yo voy a pertenecerte y cuidarte. Siempre voy a estar ahí para un momento malo, aunque sea pésima consolando, voy a hacer lo que pueda y con lo que tenga a mi alcance. 
+Feliz 1er año juntas, mi blanquita preciosa
+    </div>
+
+    <div style="margin-top:20px;">
+      Te ama profundamente Stefy. ♡
+    </div>
+
+    <!-- 🎶 DENTRO DE LA CARTA -->
+    <div style="margin-top:30px; text-align:center;">
+  <p style="font-size:14px; opacity:0.8;">
+    🎶 te la dedico
+  </p>
+
+  <a href="https://www.youtube.com/watch?v=NwIdD8PI-_c" target="_blank"
+    style="display:inline-block; padding:12px 25px; background:#f8bbd0; border-radius:25px; text-decoration:none; color:black; font-weight:bold;">
+    ▶️ Abrir canción
+  </a>
+</div>
+
+  </div>
+</div>
+
+<script>
+  const correctPassword = '0318';
+  let input = '';
+
+  function enterDigit(digit) {
+    if (input.length < 4) input += digit;
+
+    const display = document.getElementById('inputDisplay');
+    display.textContent = input.padEnd(4, '•');
+
+    if (input.length === 4) {
+      if (input === correctPassword) {
+        document.getElementById('passwordScreen').style.display = 'none';
+        document.getElementById('notepadScreen').style.display = 'block';
+      } else {
+        alert('Contraseña incorrecta');
+        input = '';
+        display.textContent = '••••';
+      }
+    }
+  }
+
+  const heartsContainer = document.getElementById('hearts');
+
+  setInterval(() => {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = '💖';
+
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+    heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+
+    heartsContainer.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 10000);
+
+  }, 500);
+</script>
+
+</body>
+</html>
